@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holi 2026: The Global Spectrum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;600;900&display=swap');
+
+        :root { --p: #ff4757; --o: #ffa502; --b: #2f3542; }
+        body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background: #fff; overflow-x: hidden; }
+
+        .master-bg {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.05) 0%, rgba(255, 165, 2, 0.05) 100%),
+                        url('https://www.transparenttextures.com/patterns/watercolor-paper.png');
+            background-attachment: fixed;
+        }
+
+        .page-section { display: none; min-height: 100vh; animation: fadeIn 0.7s ease-in-out; }
+        .active-page { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); border-radius: 2rem; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .quote-font { font-family: 'Caveat', cursive; }
+        
+        #cardCanvas { max-width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        
+        .map-marker { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .map-marker:hover { transform: scale(1.5); filter: brightness(1.2); }
+
+        .splash { position: fixed; pointer-events: none; z-index: 100; border-radius: 50%; filter: blur(30px); animation: splashAnim 2.5s forwards; }
+        @keyframes splashAnim { 0% { transform: scale(0); opacity: 0.9; } 100% { transform: scale(3); opacity: 0; } }
+    </style>
+</head>
+<body class="master-bg">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-900 text-pink-600 cursor-pointer" onclick="showPage('intro')">HOLI<span class="text-orange-500">2026</span></h1>
+            <div class="hidden lg:flex space-x-6 font-bold text-gray-600 text-sm uppercase tracking-widest">
+                <span onclick="showPage('history')" class="cursor-pointer hover:text-pink-500 transition">History</span>
+                <span onclick="showPage('traditions')" class="cursor-pointer hover:text-pink-500 transition">Traditions</span>
+                <span onclick="showPage('generator')" class="cursor-pointer text-pink-600 font-black">Card Maker</span>
+                <span onclick="showPage('importance')" class="cursor-pointer hover:text-pink-500 transition">Significance</span>
+            </div>
+            <button onclick="triggerSplash()" class="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-2 rounded-full font-black shadow-lg hover:scale-105 transition">PLAY!</button>
+        </div>
+    </nav>
+
+    <section id="intro" class="page-section active-page pt-32 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div id="countdown" class="inline-block mb-6 px-6 py-2 bg-pink-50 text-pink-600 font-black rounded-full text-sm tracking-tighter shadow-sm"></div>
+            <h1 class="text-7xl md:text-9xl font-900 text-gray-900 mb-6 leading-tight">The Festival of <span class="text-pink-600">Colors</span></h1>
+            <p class="quote-font text-4xl text-orange-500 mb-10">"As colors fill the air, Holi reminds us to fill our lives with positivity, compassion, and harmony."</p>
+            
+            <div class="glass p-12 text-left mb-12">
+                <h3 class="text-3xl font-900 mb-4 border-l-8 border-pink-500 pl-4">Introduction</h3>
+                <p class="text-gray-600 text-lg leading-relaxed">Observed on the full moon day (Purnima) of the Hindu month of Phalguna, Holi marks the arrival of spring, the victory of good over evil, and the celebration of love, unity, and renewal. It carries deep historical, spiritual, and cultural significance rooted in Hindu mythology.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="showPage('history')" class="bg-black text-white px-10 py-4 rounded-2xl font-black text-lg">Read The Mythology</button>
+                <button onclick="showPage('traditions')" class="bg-white border-2 border-black text-black px-10 py-4 rounded-2xl font-black text-lg">Explore India</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="history" class="page-section pt-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-900 text-center mb-16 text-gray-800">🔥 Mythological Stories</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="glass p-10 border-t-8 border-orange-500">
+                    <h3 class="text-2xl font-black mb-4 uppercase">1. Prahlada and Holika</h3>
+                    <p class="text-gray-600 mb-6 italic">King Hiranyakashipu’s sister Holika sat in fire with Prahlada on her lap. Holika was burned, but Prahlada survived.</p>
+                    <div class="grid grid-cols-1 gap-2 text-sm font-bold text-orange-600 uppercase tracking-tighter">
+                        <span>• Victory of good over evil</span>
+                        <span>• Power of devotion and faith</span>
+                        <span>• Destruction of arrogance and ego</span>
+                    </div>
+                </div>
+                <div class="glass p-10 border-t-8 border-blue-500">
+                    <h3 class="text-2xl font-black mb-4 uppercase">2. Krishna and Radha</h3>
+                    <p class="text-gray-600 mb-6 italic">Lord Krishna applied color to Radha’s face to celebrate love beyond physical differences.</p>
+                    <div class="grid grid-cols-1 gap-2 text-sm font-bold text-blue-600 uppercase tracking-tighter">
+                        <span>• Love beyond differences</span>
+                        <span>• Playfulness and romance</span>
+                        <span>• Origin of playing with colors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="traditions" class="page-section pt-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-900 text-center mb-6">Regional Traditions</h2>
+            <p class="text-center text-gray-400 mb-16">Click markers on the creative map to see how India celebrates</p>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative bg-pink-50/50 rounded-[4rem] p-10 flex justify-center shadow-inner">
+                    <img src="https://img.icons8.com/color/480/india.png" class="opacity-70 grayscale hover:grayscale-0 transition duration-1000">
+                    <div onclick="setTradition('up')" class="map-marker absolute top-[35%] left-[55%] bg-red-500 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                    <div onclick="setTradition('pun')" class="map-marker absolute top-[25%] left-[45%] bg-blue-600 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                    <div onclick="setTradition('ben')" class="map-marker absolute top-[45%] right-[12%] bg-yellow-500 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                    <div onclick="setTradition('raj')" class="map-marker absolute top-[38%] left-[38%] bg-orange-500 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                    <div onclick="setTradition('guj')" class="map-marker absolute top-[50%] left-[28%] bg-green-500 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                    <div onclick="setTradition('man')" class="map-marker absolute top-[45%] right-[3%] bg-purple-500 w-8 h-8 rounded-full border-4 border-white shadow-lg"></div>
+                </div>
+                <div id="tradition-detail" class="glass p-12 min-h-[400px] flex flex-col justify-center border-l-8 border-pink-500">
+                    <h3 class="text-3xl font-900 text-gray-300">Choose a state...</h3>
+                    <p class="text-gray-400 mt-4">Witness the diversity of India through its unique Holi styles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="generator" class="page-section pt-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-900 text-center mb-10 text-pink-600">Personalized Card Generator</h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="glass p-10 space-y-6">
+                    <div>
+                        <label class="block font-black text-gray-700 mb-2 uppercase text-xs">For Whom?</label>
+                        <input type="text" id="guestName" placeholder="Enter Name..." oninput="updateCard()" class="w-full p-4 rounded-xl border-2 border-pink-100 focus:border-pink-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-black text-gray-700 mb-2 uppercase text-xs">Mood Color</label>
+                        <select id="cardColor" onchange="updateCard()" class="w-full p-4 rounded-xl border-2 border-pink-100 outline-none">
+                            <option value="#ff4757">Royal Pink</option>
+                            <option value="#ffa502">Saffron Gold</option>
+                            <option value="#2ed573">Emerald Green</option>
+                            <option value="#1e90ff">Vrindavan Blue</option>
+                        </select>
+                    </div>
+                    <button onclick="downloadCard()" class="w-full bg-pink-600 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-pink-700 transition">DOWNLOAD GREETING ↓</button>
+                </div>
+                <div class="flex justify-center">
+                    <canvas id="cardCanvas" width="600" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="importance" class="page-section pt-32 px-6 pb-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-900 text-center mb-16">The Essence of Holi</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div class="glass p-8 text-center">
+                    <span class="text-5xl">🍬</span>
+                    <h4 class="font-black mt-4 mb-2">Festive Foods</h4>
+                    <p class="text-gray-500 text-sm italic">Gujiya, Thandai, Malpua, Dahi Bhalla, Puran Poli</p>
+                </div>
+                <div class="glass p-8 text-center">
+                    <span class="text-5xl">🌍</span>
+                    <h4 class="font-black mt-4 mb-2">Global Unity</h4>
+                    <p class="text-gray-500 text-sm">Celebrated in USA, UK, Nepal, and Mauritius as a symbol of peace.</p>
+                </div>
+                <div class="glass p-8 text-center">
+                    <span class="text-5xl">🌱</span>
+                    <h4 class="font-black mt-4 mb-2">Modern Value</h4>
+                    <p class="text-gray-500 text-sm">A time for cultural unity, emotional renewal, and seasonal transition.</p>
+                </div>
+            </div>
+
+            <div class="glass p-12 bg-black text-white text-center">
+                <h3 class="text-3xl font-900 mb-6">Conclusion</h3>
+                <p class="text-lg opacity-80 leading-relaxed max-w-3xl mx-auto">Holi is more than just throwing colors — it is a celebration of faith, love, unity, and the eternal triumph of good over evil. It reminds us to burn negativity, ego, and hatred — just as Holika was burned.</p>
+                <button onclick="showPage('intro')" class="mt-8 text-pink-500 font-black uppercase tracking-widest text-sm underline underline-offset-8">Back to Top</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // PAGE SWITCHING
+        function showPage(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-page'));
+            document.getElementById(id).classList.add('active-page');
+            window.scrollTo(0, 0);
+            if(id === 'generator') updateCard();
+        }
+
+        // COUNTDOWN
+        function runCountdown() {
+            const target = new Date("March 3, 2026 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const d = Math.floor((target - now) / (1000 * 60 * 60 * 24));
+                document.getElementById('countdown').innerHTML = `HOLI 2026: ${d} DAYS TO GO`;
+            }, 1000);
+        }
+        runCountdown();
+
+        // TRADITIONS DATA
+        const trads = {
+            up: { t: "Uttar Pradesh - Lathmar Holi", d: "Women playfully strike men with Lathis. Includes Phoolon Ki Holi where devotees play with flowers instead of colors." },
+            pun: { t: "Punjab - Hola Mohalla", d: "Established by Guru Gobind Singh. Includes martial arts displays, mock battles, and spiritual gatherings." },
+            ben: { t: "West Bengal - Dol Jatra", d: "Celebrated as Basanta Utsav with yellow attire, cultural dance, and Rabindra Sangeet." },
+            raj: { t: "Rajasthan - Royal Holi", d: "Grand palace celebrations in Jaipur and Udaipur with traditional royal processions and folk music." },
+            guj: { t: "Gujarat - Dhuleti", d: "Streets filled with music and Garba dance celebrations. Traditionally known as Dhuleti." },
+            man: { t: "Manipur - Yaosang", d: "A six-day celebration featuring the traditional 'Thabal Chongba' dance, blending local and Hindu traditions." }
+        };
+
+        function setTradition(key) {
+            const data = trads[key];
+            const div = document.getElementById('tradition-detail');
+            div.innerHTML = `<h3 class="text-3xl font-900 text-pink-600 mb-4 animate-fadeIn">${data.t}</h3><p class="text-gray-700 text-lg leading-relaxed">${data.d}</p>`;
+        }
+
+        // CARD GENERATOR
+        function updateCard() {
+            const canvas = document.getElementById('cardCanvas');
+            const ctx = canvas.getContext('2d');
+            const name = document.getElementById('guestName').value || "YOU";
+            const color = document.getElementById('cardColor').value;
+
+            // Background
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, 600, 600);
+            
+            // Random Splashes
+            for(let i=0; i<15; i++) {
+                ctx.fillStyle = "rgba(255,255,255,0.2)";
+                ctx.beginPath();
+                ctx.arc(Math.random()*600, Math.random()*600, Math.random()*50+20, 0, Math.PI*2);
+                ctx.fill();
+            }
+
+            // Text
+            ctx.fillStyle = "#fff";
+            ctx.textAlign = "center";
+            ctx.shadowBlur = 10; ctx.shadowColor = "rgba(0,0,0,0.3)";
+            
+            ctx.font = "bold 70px Poppins";
+            ctx.fillText("HAPPY HOLI", 300, 250);
+            
+            ctx.font = "italic 60px Caveat";
+            ctx.fillText(name, 300, 320);
+            
+            ctx.font = "20px Poppins";
+            ctx.fillText("May your life be as colorful as the rainbow!", 300, 380);
+        }
+
+        function downloadCard() {
+            const link = document.createElement('a');
+            link.download = 'My-Holi-Card.png';
+            link.href = document.getElementById('cardCanvas').toDataURL();
+            link.click();
+        }
+
+        // VISUAL SPLASH
+        function triggerSplash() {
+            const colors = ['#ff4757', '#ffa502', '#2ed573', '#1e90ff', '#e056fd'];
+            for(let i=0; i<10; i++) {
+                const s = document.createElement('div');
+                s.className = 'splash';
+                s.style.width = '200px'; s.style.height = '200px';
+                s.style.background = colors[Math.floor(Math.random()*colors.length)];
+                s.style.left = Math.random()*100+'vw'; s.style.top = Math.random()*100+'vh';
+                document.body.appendChild(s);
+                setTimeout(() => s.remove(), 2500);
+            }
+        }
+    </script>
+</body>
+</html>
